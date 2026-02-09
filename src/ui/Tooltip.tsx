@@ -10,6 +10,10 @@ type TooltipProps = {
   className?: string;
 };
 
+const getIsTouchDevice = () =>
+  typeof window !== 'undefined' &&
+  (window.ontouchstart !== undefined || window.matchMedia('(pointer: coarse)').matches);
+
 export function Tooltip({
   content,
   children,
@@ -17,10 +21,15 @@ export function Tooltip({
   delay = 100,
   className = '',
 }: TooltipProps) {
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [visible, setVisible] = useState(false);
   const [coords, setCoords] = useState({ top: 0, left: 0 });
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setIsTouchDevice(getIsTouchDevice());
+  }, []);
 
   const show = () => {
     timeoutRef.current = setTimeout(() => setVisible(true), delay);
@@ -115,6 +124,10 @@ export function Tooltip({
       )}
     </AnimatePresence>
   );
+
+  if (isTouchDevice) {
+    return <div className={`inline-flex ${className}`.trim()}>{children}</div>;
+  }
 
   return (
     <>
