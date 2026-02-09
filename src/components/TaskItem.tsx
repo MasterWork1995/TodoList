@@ -110,7 +110,7 @@ function TaskItemInner({
         </div>
 
         <div
-          className={`absolute right-2 top-2 flex opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100 ${
+          className={`absolute right-2 top-2 flex ${
             isCompact ? 'flex-row gap-0.5' : 'flex-col gap-1 top-3 right-3'
           }`}
         >

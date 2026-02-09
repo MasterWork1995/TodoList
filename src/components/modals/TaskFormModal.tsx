@@ -30,6 +30,7 @@ const labelSelectStyles = {
     ...base,
     borderRadius: '0.75rem',
     boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
+    zIndex: 9999,
   }),
   menuPortal: (base: object) => ({
     ...base,
@@ -198,6 +199,7 @@ export function TaskFormModal({
                   placeholder="Select or create labels..."
                   menuPortalTarget={typeof document !== 'undefined' ? document.body : undefined}
                   menuPosition="fixed"
+                  menuPlacement="auto"
                   styles={labelSelectStyles}
                   classNamePrefix="react-select"
                   aria-label="Labels"
