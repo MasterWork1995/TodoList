@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Select from 'react-select';
 import { Button, Tooltip } from '../ui';
-import { DropdownIndicator } from '../ui/reactSelectFaComponents';
 import type { Column } from '../types';
 
 type BulkActionsBarProps = {
@@ -83,7 +82,6 @@ export const BulkActionsBar = ({
           aria-label="Move to column"
           isClearable={false}
           isDisabled={!hasSelection}
-          components={{ DropdownIndicator } as unknown as Record<string, React.ComponentType>}
         />
       </div>
       <Tooltip content={hasSelection ? 'Clear selection' : 'No selection'} position="bottom">

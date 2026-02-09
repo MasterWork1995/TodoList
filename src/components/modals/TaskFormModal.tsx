@@ -3,7 +3,6 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import CreatableSelect from 'react-select/creatable';
 import { Input, Button } from '../../ui';
-import { DropdownIndicator, ClearIndicator, MultiValueRemove } from '../../ui/reactSelectFaComponents';
 import type { Task, TaskCreatePayload } from '../../types';
 
 type Option = { value: string; label: string };
@@ -31,6 +30,10 @@ const labelSelectStyles = {
     borderRadius: '0.75rem',
     boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
     zIndex: 9999,
+  }),
+  menuList: (base: object) => ({
+    ...base,
+    maxHeight: 'min(300px, 60vh)',
   }),
   menuPortal: (base: object) => ({
     ...base,
@@ -197,17 +200,9 @@ export function TaskFormModal({
                     if (v && !labels.includes(v)) setLabels((prev) => [...prev, v]);
                   }}
                   placeholder="Select or create labels..."
-                  menuPortalTarget={typeof document !== 'undefined' ? document.body : undefined}
-                  menuPosition="fixed"
-                  menuPlacement="auto"
                   styles={labelSelectStyles}
                   classNamePrefix="react-select"
                   aria-label="Labels"
-                  components={{
-                    DropdownIndicator,
-                    ClearIndicator,
-                    MultiValueRemove,
-                  } as unknown as Record<string, React.ComponentType>}
                 />
               </div>
             </div>
