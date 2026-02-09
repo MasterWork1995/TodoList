@@ -45,7 +45,7 @@ export function ConfirmDialog({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[80] grid grid-cols-1 grid-rows-1 items-center justify-items-center p-4"
+        className="fixed inset-0 z-[80] grid grid-cols-1 grid-rows-1 items-center justify-items-center"
         role="dialog"
         aria-modal="true"
         aria-labelledby="confirm-dialog-title"
